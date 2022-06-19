@@ -94,6 +94,12 @@ namespace Auth
                 {
                     config.AddRequirements(new GenderMinAgeRequirement(30, "male"), new NonAdminUserRequirement());
                 });
+                config.AddPolicy("idMustBe434", config => {
+                    config.RequireAssertion(context => {
+                        string userId = context.User.FindFirst(claim => claim.Type == JwtRegisteredClaimNames.Jti)?.Value;
+                        return userId == "434";
+                    });
+                });
             });
         }
 

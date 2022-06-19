@@ -30,5 +30,9 @@ namespace Auth.Controllers
         {
             return Ok();
         }
+        [Authorize(Policy = "idMustBe434")]
+        public IActionResult IdMustBy434() {
+            return Ok();
+        }
     }
 }
